@@ -1,0 +1,42 @@
+<template>
+	<view class="container">
+
+	</view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class GoldLibrary extends wepy.page {
+	config = {
+		navigationBarTitleText: '金库'
+	}
+	components = {}
+
+	mixins = []
+
+	data = {
+
+	}
+
+	computed = {
+
+	}
+
+	methods = {
+
+
+	}
+
+	events = {
+
+	}
+
+	onShow() {
+		console.log("金库");
+	}
+	onLoad() { }
+}
+</script>
+<style lang="less">
+</style>

@@ -1,0 +1,65 @@
+<script>
+import wepy from 'wepy'
+import 'wepy-async-function'
+
+export default class extends wepy.app {
+	config = {
+		pages: [
+			'pages/index',
+			'pages/gold_library',
+			'pages/gold_ring',
+			'pages/info',
+		],
+		window: {
+			backgroundTextStyle: 'light',
+			navigationBarBackgroundColor: '#fff',
+			navigationBarTitleText: 'WeChat',
+			navigationBarTextStyle: 'black',
+			enablePullDownRefresh: false,
+			backgroundColor: '#f5f5f5',
+		},
+		"tabBar": {
+			"color": "#999999",
+			"selectedColor": "#ff6500",
+			"backgroundColor": "#ffffff",
+			"borderStyle": "black",
+			"list": [
+				{
+					"pagePath": "pages/index",
+					"text": "首页",
+					"iconPath": "images/shouye1.png",
+					"selectedIconPath": "images/shouye2.png"
+				},
+				{
+					"pagePath": "pages/gold_library",
+					"text": "金库",
+					"iconPath": "images/jinku1.png",
+					"selectedIconPath": "images/jinku2.png"
+				},
+				{
+					"pagePath": "pages/gold_ring",
+					"text": "金圈",
+					"iconPath": "images/jinquan1.png",
+					"selectedIconPath": "images/jinquan2.png"
+				},
+				{
+					"pagePath": "pages/info",
+					"text": "我的",
+					"iconPath": "images/wode1.png",
+					"selectedIconPath": "images/wode2.png"
+				}
+			]
+		}
+	}
+
+	globalData = {
+		userInfo: null
+	}
+
+	onLaunch() {
+		console.log("程序初始化");
+	}
+}
+</script>
+<style lang="less">
+</style>

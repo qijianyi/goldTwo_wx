@@ -1,0 +1,42 @@
+<template>
+	<view class="container">
+
+	</view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Info extends wepy.page {
+	config = {
+		navigationBarTitleText: '我的'
+	}
+	components = {}
+
+	mixins = []
+
+	data = {
+
+	}
+
+	computed = {
+
+	}
+
+	methods = {
+
+
+	}
+
+	events = {
+
+	}
+
+	onShow() {
+		console.log("我的");
+	}
+	onLoad() { }
+}
+</script>
+<style lang="less">
+</style>
