@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		<view>gitHub测试<view>
+		<view>就是想测试<view>
 			</view>
 </template>
 
@@ -19,22 +19,13 @@ export default class Index extends wepy.page {
 		abc: this.mixin,
 	}
 
-	computed = {
+	computed = {}
 
-	}
+	methods = {}
 
-	methods = {
+	events = {}
 
-
-	}
-
-	events = {
-
-	}
-
-	onShow() {
-
-	}
+	onShow() { }
 	onLoad() { }
 }
 </script>
