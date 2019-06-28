@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
-		这是什么是 啊
-	</view>
+		<view>gitHub测试<view>
+			</view>
 </template>
 
 <script>
