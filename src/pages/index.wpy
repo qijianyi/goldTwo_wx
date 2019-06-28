@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
-		<view>就是想测试<view>
-			</view>
+		<view>终于弄好了</view>
+	</view>
 </template>
 
 <script>
