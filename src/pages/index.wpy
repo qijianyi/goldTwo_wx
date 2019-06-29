@@ -1,6 +1,7 @@
 <template>
 	<view class="container">
-		<view>终于弄好了好开心啊</view>
+		<view>这里也弄好了</view>
+		<view>可以了</view>
 	</view>
 </template>
 
