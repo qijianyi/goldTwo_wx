@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ### 安装（更新） wepy 命令行工具。
 	npm install wepy-cli -g
 
@@ -154,3 +155,6 @@ this.$ajax('', {
         ├── tip.js                  //提示弹框组件
         ├── util.js                 //工具
         └── wxRequest.js            //ajax请求
+=======
+"#myGitProject" 
+>>>>>>> 4b86c0b3cb42b85f24c165a479c6838f6b9bdabd
