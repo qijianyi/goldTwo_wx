@@ -2,6 +2,7 @@
 	<view class="container">
 		<view>这里也弄好了</view>
 		<view>可以了</view>
+		<view>在测试一下</view>
 	</view>
 </template>
 
