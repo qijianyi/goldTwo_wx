@@ -29,15 +29,20 @@ export default class Index extends wepy.page {
 	events = {}
 
 	onShow() {
+		// this.$alert('成功了啊');
 		this.$ajax(api.getIndex, {
 			query: {
-				city: 800,
+				city: 800
 			},
-			beforeSend: r => { },
 			success: (json) => {
+				console.log('成功了');
 				console.log(json);
+			},
+			fail: () => {
+				console.log('出错了');
 			}
 		})
+
 	}
 	onLoad() { }
 }
