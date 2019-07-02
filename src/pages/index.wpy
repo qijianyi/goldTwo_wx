@@ -3,7 +3,7 @@
 		<view>这里也弄好了</view>
 		<view>可以了</view>
 		<view>在测试dddddd一下</view>
-		<view hover-class="{{}}" @tap="">fdsdssasdasda</view>
+		<view hover-class="{{}}">fdsdssasdasda</view>
 		<view class="iconfont icon-you"></view>
 	</view>
 </template>
@@ -29,7 +29,6 @@ export default class Index extends wepy.page {
 	events = {}
 
 	onShow() {
-		// this.$alert('成功了啊');
 		this.$ajax(api.getIndex, {
 			query: {
 				city: 800
@@ -38,9 +37,6 @@ export default class Index extends wepy.page {
 				console.log('成功了');
 				console.log(json);
 			},
-			fail: () => {
-				console.log('出错了');
-			}
 		})
 
 	}
