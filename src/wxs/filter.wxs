@@ -1,0 +1,183 @@
+module.exports = {
+  // 时间戳转日期
+  dateFormat: function (timestamp) {
+    function zeroize(num) {
+      return (num.toString().length == 1 ? '0' : '') + num;
+    }
+
+    var curTimestamp = parseInt(getDate().getTime() / 1000); //当前时间戳
+    var timestampDiff = curTimestamp - timestamp; // 参数时间戳与当前时间戳相差秒数
+
+    var curDate = getDate(curTimestamp * 1000); // 当前时间日期对象
+    var tmDate = getDate(timestamp * 1000); // 参数时间戳转换成的日期对象
+
+    var Y = tmDate.getFullYear(),
+      m = tmDate.getMonth() + 1,
+      d = tmDate.getDate();
+    var H = tmDate.getHours(),
+      i = tmDate.getMinutes(),
+      s = tmDate.getSeconds();
+
+    if (timestampDiff < 60) { // 一分钟以内
+      return "刚刚";
+    } else if (timestampDiff < 3600) { // 一小时前之内
+      return Math.floor(timestampDiff / 60) + "分钟前";
+    } else if (curDate.getFullYear() == Y && curDate.getMonth() + 1 == m && curDate.getDate() == d) {
+      return '今天' + zeroize(H) + ':' + zeroize(i);
+    } else {
+      var newDate = getDate((curTimestamp - 86400) * 1000); // 参数中的时间戳加一天转换成的日期对象
+      if (newDate.getFullYear() == Y && newDate.getMonth() + 1 == m && newDate.getDate() == d) {
+        return '昨天' + zeroize(H) + ':' + zeroize(i);
+      } else if (curDate.getFullYear() == Y) {
+        return zeroize(m) + '月' + zeroize(d) + '日 ' + zeroize(H) + ':' + zeroize(i);
+      } else {
+        return Y + '年' + zeroize(m) + '月' + zeroize(d) + '日 ' + zeroize(H) + ':' + zeroize(i);
+      }
+    }
+  },
+  // 时间戳转时、分或者时、分、秒的时间18:00 18:00:00
+  dateFormat2: function (timestamp, timeNoSecond) {
+    var timestamp = getDate(timestamp);
+
+    function zeroize(num) {
+      return (num.toString().length == 1 ? '0' : '') + num;
+    }
+    var H = timestamp.getHours(),
+      i = timestamp.getMinutes(),
+      s = timestamp.getSeconds();
+    if (timeNoSecond) {
+      return zeroize(H) + ':' + zeroize(i)
+    } else {
+      return zeroize(H) + ':' + zeroize(i) + ':' + zeroize(s)
+    }
+  },
+  // 时间戳转时间 年-月-日 时:分:秒
+  dateFormat3: function (timestamp) {
+    var timestamp = getDate(timestamp)
+
+    function zeroize(num) {
+      return (num.toString().length == 1 ? '0' : '') + num;
+    }
+    var Y = timestamp.getFullYear(),
+      M = timestamp.getMonth() + 1,
+      D = timestamp.getDate(),
+      H = timestamp.getHours(),
+      i = timestamp.getMinutes(),
+      s = timestamp.getSeconds()
+    return zeroize(Y) + '-' + zeroize(M) + '-' + zeroize(D) + ' ' + zeroize(H) + ':' + zeroize(i) + ':' + zeroize(s)
+  },
+  // 将计时的毫秒数转换为时分秒
+  dateFormat4: function (timestamp) {
+    var timestamp = Math.round(timestamp / 1000)
+
+    function zeroize(num) {
+      return (num.toString().length == 1 ? '0' : '') + num;
+    }
+    var H = Math.floor(timestamp / 3600),
+      i = Math.floor(timestamp / 60) % 60,
+      s = timestamp % 60;
+    return zeroize(H) + ':' + zeroize(i) + ':' + zeroize(s)
+  },
+  // 将秒转换为时间
+  dateFormat5: function (timestamp) {
+    function zeroize(num) {
+      return (num.toString().length == 1 ? '0' : '') + num;
+    }
+    var H = Math.floor((timestamp / 3600));
+    var M = (timestamp % 3600) / 60
+    return zeroize(H) + ':' + zeroize(M)
+  },
+  // 时间戳转年龄
+  dateFormatToAge: function (timestamp) {
+    var nowTime = getDate().getTime()
+    var age = Math.floor((nowTime - timestamp) / 31536000000)
+    return age
+  },
+  dateReplace: function (time) {
+    var tmDate = getDate(time);
+    var Y = tmDate.getFullYear() + '-';
+    var M = (tmDate.getMonth() + 1 < 10 ? '0' + (tmDate.getMonth() + 1) : tmDate.getMonth() + 1) + '-';
+    var D = (tmDate.getDate() < 10 ? '0' + (tmDate.getDate()) : tmDate.getDate()) + ' ';
+    return Y + M + D;
+  },
+
+
+  // 时间戳转星座
+  getAstro: function (timestamp) {
+    var s = "魔羯水瓶双鱼白羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯",
+      arr = [20, 19, 21, 21, 21, 22, 23, 23, 23, 23, 22, 22],
+      time = getDate(timestamp),
+      month = time.getMonth() + 1,
+      day = time.getDate(),
+      m = month * 2 - (day < arr[month - 1] ? 2 : 0);
+    return s.substring(m, m + 2) + '座';
+  },
+  // 小姐状态码转文字
+  waiterState: function (state) {
+    if (state == 101) {
+      return '已下班'
+    } else if (state == 102) {
+      return '已邀请'
+    } else if (state == 103) {
+      return '忙碌'
+    } else if (state == 104) {
+      return '已锁定'
+    } else if (state == 105) {
+      return '邀请失败'
+    } else if (state == 106) {
+      return '已发送邀请'
+    } else if (state == 107) {
+      return '已加入房间'
+    } else if (state == 108) {
+      return '空闲'
+    } else if (state == 109) {
+      return '足迹'
+    }
+  },
+  // 邀请状态转文字
+  inviteState: function (state) {
+    if (state == 0) {
+      return '等待'
+    } else if (state == 1) {
+      return '接受'
+    } else if (state == 2) {
+      return '拒绝'
+    } else if (state == 3) {
+      return '接受其他'
+    }
+  },
+  // 小姐签到状态码转 签到、签退、取消签退
+  signState: function (state) {
+    if (state == 0) {
+      return "签到"
+    } else if (state % 2 != 0) {
+      return "签退"
+    } else {
+      return "取消签退"
+    }
+  },
+  // v3签到管理
+  keepstate: function (state) {
+    if (state == 0) {
+      return "已保留"
+    } else if (state == 1) {
+      return "正常"
+    } else if (state == 2) {
+      return "强制保留"
+    } else if (state == 3) {
+      return "强制正常"
+    }
+  },
+  // v3服务员在职状态管理
+  keepstate2: function (state) {
+    if (state == 0) {
+      return "待入职"
+    } else if (state == 1) {
+      return "在职"
+    } else if (state == 2) {
+      return "停职"
+    } else if (state == 3) {
+      return "离职"
+    }
+  }
+}

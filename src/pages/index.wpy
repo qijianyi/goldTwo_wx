@@ -12,6 +12,7 @@
 import wepy from 'wepy'
 import api from '@/api/api';
 import baseMixin from '../mixins/baseMixin'
+import utilwxs from '../wxs/filter.wxs'
 export default class Index extends wepy.page {
 	config = {
 		navigationBarTitleText: '金小二'
@@ -19,7 +20,7 @@ export default class Index extends wepy.page {
 	components = {}
 
 	mixins = [baseMixin]
-
+	wxs = { utilwxs }
 	data = {}
 
 	computed = {}
@@ -33,10 +34,10 @@ export default class Index extends wepy.page {
 			query: {
 				city: 800
 			},
-			success: (json) => {
-				console.log('成功了');
-				console.log(json);
-			},
+		}).then((res) => {
+			console.log(res);
+		}).catch((res) => {
+
 		})
 
 	}
