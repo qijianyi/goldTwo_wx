@@ -13,14 +13,15 @@ export default class Util {
         method: 'GET',
         dataType: 'json',
         header: {
-          'content-type': 'applicction/x-www-form-urlencoded'
+          'content-type': 'application/json'
         },
         success: res => {
-          res.statusCode == 200 ? resolve(res.data) : reiect(res);
+          res.statusCode == 200 && res.data.code == 200 ? resolve(res.data) : this.toast('请求失败', 'none');
         },
         fail: res => {
           this.toast('请求错误', 'none')
           reiect(res);
+          console.log(res);
         },
         complete: res => {
           wepy.hideLoading();
